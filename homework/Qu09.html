@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qu09.html</title>
+    <script>
+        document.write("<h1>난수10개 생성</h1>");
+        document.write("<hr>");
+        
+        var plots = new Array(10);
+        var maxNum = 0;
+        for(var i = 0; i < plots.length; i++){
+            plots[i] = Math.floor(Math.random() * 100) + 1;
+            document.write(plots[i] + " ");
+        }
+
+        document.write("<hr>");
+        document.write("가장큰수는?");
+
+        for(var i = 0; i < plots.length; i++){
+            if (plots[i] > maxNum){
+                maxNum = plots[i];
+            }
+        }
+        
+        document.write(maxNum);
+        document.write("<hr>");
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

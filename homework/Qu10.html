@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qu10.html</title>
+    <script>
+        document.write("<h2>정수 5개 입력받아 역순으로 출력</h2>")
+        document.write("<hr>");
+        
+        var arr = new Array(5);
+        for(var i = 0; i < arr.length; i++){
+            arr[i] = prompt("정수 입력","");
+        }
+
+        document.write("입력된 수의 배열<br>");1
+        for(var j = 0; j < arr.length; j++){
+            document.write(arr[j] + " ");
+        }
+
+        document.write("<hr>");
+        document.write("역순으로 재정렬된 배열<br>");
+        for(var k = arr.length - 1; k >= 0; k--){
+            document.write(arr[k] + " ");     
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

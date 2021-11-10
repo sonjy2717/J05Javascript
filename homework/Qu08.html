@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qu08.html</title>
+    <script>
+        var num = prompt("숫자를 입력하세요", "");
+        var lastNum = num % 10;
+        
+        while (num > 10){
+            num = Math.floor(num / 10);
+            document.write(num + "<br>");
+        }
+
+        if (num == lastNum){
+            document.write("처음과 끝이 같음");
+        }
+        else {
+            document.write("처음과 끝이 다름");
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
