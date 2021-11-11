@@ -25,12 +25,12 @@
         }
         document.write(names[index]);
 
-        var ascii = 130;
+        var ascii = names[0];
         document.write("<br>가장 먼저 나오는 이름 : ");
-        for(var i = 0; i < names.length; i++){
-            if(names[i].charCodeAt(0) < ascii){
+        for(var i = 1; i < names.length; i++){
+            if(names[i] < ascii){
                 var name = names[i];
-                ascii = names[i].charCodeAt(0);
+                ascii = names[i];
             }
         }
         document.write(name);

@@ -6,19 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Qu08.html</title>
     <script>
-        var num = prompt("숫자를 입력하세요", "");
+        //prompt를 통해 입력받으면 무조건 문자로 반환됨
+        var str = prompt("숫자를 입력하세요", "");
+        var num = parseInt(str);
         var lastNum = num % 10;
         
-        while (num > 10){
+        while (num > 1){
             num = Math.floor(num / 10);
-            document.write(num + "<br>");
         }
 
         if (num == lastNum){
-            document.write("처음과 끝이 같음");
+            document.write(str + " -> 처음과 끝이 같음");
         }
         else {
-            document.write("처음과 끝이 다름");
+            document.write(str + " -> 처음과 끝이 다름");
         }
     </script>
 </head>
