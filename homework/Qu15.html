@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qu15.html</title>
+    <style>
+        .div{
+            text-align: center;
+            display: inline-block;
+            width: 150px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h2>16개의 랜덤한 색 만들기</h2>
+    <hr>
+
+    <div class="div"></div>
+    <div class="div"></div>
+    <div class="div"></div>
+    <div class="div"></div>
+    <div class="div"></div>
+    <div class="div"></div>
+    <div class="div"></div>
+    <div class="div"></div>
+    <div class="div"></div>
+    <div class="div"></div>
+    <div class="div"></div>
+    <div class="div"></div>
+    <div class="div"></div>
+    <div class="div"></div>
+    <div class="div"></div>
+    <div class="div"></div>
+
+    <script>
+        var div = document.getElementsByClassName("div");
+        
+        for(var i = 0; i < div.length; i++){
+            var r = (Math.round(Math.random() * 255) + 1);
+            var g = (Math.round(Math.random() * 255) + 1);
+            var b = (Math.round(Math.random() * 255) + 1);
+
+            div[i].innerHTML = "rgb(" + r + "," + g + "," + b + ")";
+            var rgb = 'rgb('+ r +', '+ g +', '+ b +')';
+            div[i].style.backgroundColor = rgb;            
+        }
+    </script>
+</body>
+</html>

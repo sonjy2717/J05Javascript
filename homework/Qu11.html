@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qu11.html</title>
+</head>
+<body id="body">
+    <script>
+        var date = new Date();
+
+        document.write("<h2>오전이면 lightskyblue"
+                + ", 오후이면 orange 배경</h2>");
+        document.write("<hr>");
+
+        document.write("현재 시간 : " + 
+            date.getHours() + "시," + 
+            date.getMinutes() + "분," + 
+            date.getSeconds() + "초");
+
+        if(date.getHours() >= 0 && date.getHours() <= 11){
+            document.getElementById("body").
+                style.backgroundColor = "lightskyblue";
+        }
+        else if(date.getHours() && date.getHours()){
+            document.getElementById("body").
+                style.backgroundColor = "orange";
+        }
+    </script>
+</body>
+</html>

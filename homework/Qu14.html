@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qu14.html</title>
+    <style>
+        .div{
+            text-align: center;
+            display: inline-block;
+            width: 100px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h2>17개의 CSS3 색이름과 색</h2>
+    <hr>
+
+    <div id="d">
+        <div class="div"></div>
+        <div class="div"></div>
+        <div class="div"></div>
+        <div class="div"></div>
+        <div class="div"></div>
+        <div class="div"></div>
+        <div class="div"></div>
+        <div class="div"></div>
+        <div class="div"></div>
+        <div class="div"></div>
+        <div class="div"></div>
+        <div class="div"></div>
+        <div class="div"></div>
+        <div class="div"></div>
+        <div class="div"></div>
+        <div class="div"></div>
+        <div class="div"></div>
+        <div class="div"></div>
+    </div>
+
+    <script>
+        var colorNames = ["maroon", "red", "orange", "yellow", 
+            "olive", "purple", "fuchsia", "white", "lime", 
+            "green", "navy", "blue", "aqua", "teal", "black", 
+            "silver", "gray", "lightskyblue"];
+
+        var div = document.getElementsByClassName("div");
+
+        for(var i = 0; i < colorNames.length; i++){
+            div[i].innerHTML = colorNames[i];
+            div[i].style.backgroundColor = colorNames[i];
+        }
+
+    </script>
+</body>
+</html>
