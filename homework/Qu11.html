@@ -20,11 +20,11 @@
             date.getMinutes() + "분," + 
             date.getSeconds() + "초");
 
-        if(date.getHours() >= 0 && date.getHours() <= 11){
+        if(date.getHours() < 12){
             document.getElementById("body").
                 style.backgroundColor = "lightskyblue";
         }
-        else if(date.getHours() && date.getHours()){
+        else{
             document.getElementById("body").
                 style.backgroundColor = "orange";
         }
