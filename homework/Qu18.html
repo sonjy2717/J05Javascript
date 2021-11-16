@@ -6,21 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Qu18.html</title>
     <script>
-        function fnAnswer(){
+        function fnAnswer(num){
             var p = document.getElementsByTagName("p");
             var span = document.getElementsByTagName("span");
+            var cnum = parseInt(num);
 
-            for(var i = 0; i < p.length; i++){
-                span[i].innerHTML = eval(p[i].innerText.split("=")[0]);
-            }
+            span[cnum-1].innerHTML = eval(p[cnum-1].innerText.split("=")[0]);
         }
     </script>
 </head>
 <body>
     <h3>계산해봅시다</h3>
 	<hr>
-	<p>2 + 4 = <span onclick="fnAnswer();">답</span></p>
-	<p>4 * 20 + 64 = <span onclick="fnAnswer();">답</span></p>
-	<p>20/5-8*2 = <span onclick="fnAnswer();">답</span></p>        
+	<p>2 + 4 = <span onclick="fnAnswer('1');">답</span></p>
+	<p>4 * 20 + 64 = <span onclick="fnAnswer('2');">답</span></p>
+	<p>20/5-8*2 = <span onclick="fnAnswer('3');">답</span></p>        
 </body>
 </html>
