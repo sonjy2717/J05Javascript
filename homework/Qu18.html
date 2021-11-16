@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qu18.html</title>
+    <script>
+        function fnAnswer(){
+            var p = document.getElementsByTagName("p");
+            var span = document.getElementsByTagName("span");
+
+            for(var i = 0; i < p.length; i++){
+                span[i].innerHTML = eval(p[i].innerText.split("=")[0]);
+            }
+        }
+    </script>
+</head>
+<body>
+    <h3>계산해봅시다</h3>
+	<hr>
+	<p>2 + 4 = <span onclick="fnAnswer();">답</span></p>
+	<p>4 * 20 + 64 = <span onclick="fnAnswer();">답</span></p>
+	<p>20/5-8*2 = <span onclick="fnAnswer();">답</span></p>        
+</body>
+</html>

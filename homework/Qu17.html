@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qu17.html</title>
+    <script>
+        var count = 0;
+        function fnSh(){
+            var span = document.getElementsByTagName("span");
+            
+            for(var i = 0; i < span.length; i++){
+                if(count % 2 == 0){
+                    span[i].style.visibility = "visible";
+                }
+                else{
+                    span[i].style.visibility = "hidden";
+                }
+            }
+            count++;
+        }
+    </script>
+</head>
+<body>
+    <strong style="font-size: 18px;">다음 빈 곳에 숨은 단어?</strong>
+    <input type="button" name="sh" id="sh" value="show/hide" onclick="fnSh();">
+    <hr>
+    <ul>
+        <li>i (<span>love</span>) you.</li>
+        <li>CSS is Cascading (<span>Style</span>) Sheet</li>
+        <li>응답하라 (<span>1988</span>).</li>
+    </ul>
+</body>
+</html>
