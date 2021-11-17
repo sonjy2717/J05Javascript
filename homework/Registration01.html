@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration01.html</title>
+    <style>
+        *{font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 12px;margin: 0px auto;}
+        form{margin-top: 20px;}
+        input, select, button {border: 1px solid #afafaf;}
+        input.userInput{padding:3px 2px;}
+        select.userSelect{padding:2px 0;}
+        .c_imp{color: red;}
+        .userTable{border: none; border-collapse: collapse; width: 670px;}
+        .userTable td{padding:10px; border: 1px solid #b9babb;}
+        .userTable td.userTit{background-color: #E4E6E9; font-weight: bold;}
+        .btn_search{background-color: #3d3d3d; color: #ffffff; width: 70px; height: 23px; padding:1px 0 2px;}
+        .btn_search:hover{background-color: #6d6d6d;}        
+        .btn_submit{width:120px;height:28px;font-weight:bold;cursor:pointer;background-color: #E70E16;color:white;font-size: 14px;}
+        .btn_cancel{width:120px;height:28px;font-weight:bold;cursor:pointer;background-color: #464646;color:white;font-size: 14px;}
+        .w20{width:20px;} .w30{width:30px;} .w40{width:40px;} .w50{width:50px;} .w100{width:100px;} 
+        .w300{width:300px;} .w510{width:510px;} .w410{width:410px;} 
+        #id_loading{position:absolute;top:530px;z-index:10;width:100%;text-align:center;display:block;}
+    </style>
+    <script>
+        var validate = function(){
+            // var id = document.getElementsByName("id")[0].value;
+            //아이디 검사
+            var id = myform.id.value;
+            if(!(id.length >= 8 && id.length <= 12)){
+                alert('아이디는 8~12자로 입력해주세요');
+                myform.id.value = "";
+                document.getElementsByName("id")[0].focus();
+                return false;
+            }
+            if((id.substr(0, 1)) >= '0' && (id.substr(0, 1)) <= '9'){
+                alert('아이디의 시작은 숫자로 할 수 없습니다');
+                myform.id.value = "";
+                document.getElementsByName("id")[0].focus();
+                return false;
+            }
+            for(var i = 0; i < id.length; i++){
+                if(!(id[i] >= 'a' && id[i] <= 'z') 
+                    && !(id[i] >= 'A' && id[i] <= 'Z')
+                    && !(id[i] >= '0' && id[i] <= '9')){
+                    alert('아이디에 특수문자나 기호는 사용할 수 없습니다');
+                    myform.id.value = "";
+                    document.getElementsByName("id")[0].focus();
+                    return false;
+                }
+            }
+
+
+
+            var pass1 = myform.pass1.value;
+            if(pass1 == ""){
+                alert('비밀번호를 입력하세요');
+                document.getElementsByName("pass1")[0].focus();
+                return false;
+            }
+
+
+
+            var pass2 = myform.pass2.value;
+            if(pass2 == ""){
+                alert('비밀번호 확인을 입력하세요');
+                document.getElementsByName("pass2")[0].focus();
+                return false;
+            }
+
+
+
+            var name = myform.name.value;
+            if(name == ""){
+                alert('이름을 입력하세요');
+                document.getElementsByName("name")[0].focus();
+                return false;
+            }
+
+
+
+            var birth_year = myform.birth_year.value;
+            var birth_month = myform.birth_month.value;
+            var birth_day = myform.birth_day.value;
+            if(birth_year == "" || birth_month == "" || birth_day == ""){
+                alert('생년월일을 입력하세요');
+                return false;
+            }
+
+
+
+            var email1 = myform.email1.value;
+            var email2 = myform.email2.value;
+            if(email1 == "" || email2 == ""){
+                alert('이메일을 입력하세요');
+                document.getElementsByName("email1")[0].focus();
+                return false;
+            }
+
+
+
+            var zipcode = myform.zipcode.value;
+            var addr1 = myform.addr1.value;
+            var addr2 = myform.addr2.value;
+            if(zipcode == "" || addr1 == "" || addr2 == ""){
+                alert('주소를 입력해주세요');
+                return false;
+            }
+
+
+
+            var phone2 = myform.phone2.value;
+            var phone3 = myform.phone3.value;
+            var hphone2 = myform.hphone2.value;
+            var hphone3 = myform.hphone3.value;
+            if(phone2 == "" || phone3 == "" || hphone2 == "" || hphone3 == ""){
+                alert('전화번호를 입력해주세요');
+                return false;
+            }
+
+
+
+            var etc_no1 = myform.etc_no1.value;
+            var etc_no2 = myform.etc_no2.value;
+            if(etc_no1 == "" || etc_no2 == ""){
+                alert('관심분야와 가입경로를 선택해주세요');
+                return false;
+            }
+        }
+
+        function inputDomain(obj){
+            myform.email2.value = obj;
+        }
+
+        function commonFocusMove(thisObj, numLength, nextObj){
+            var obj2 = document.getElementById(thisObj);
+            var strLength = obj2.value.length;
+
+            if(strLength >= numLength){
+                document.getElementById(nextObj).focus();
+            }
+        }
+    </script>
+</head>
+<body>
+    <form name="myform" action="./join_write_end1stp.php" method="POST" onsubmit="return validate();">
+        <table class="userTable">
+            <colgroup>
+                <col width="130px" />
+                <col width="540px" />
+            </colgroup>
+            <tr>
+                <td class="userTit"><span class="c_imp">*</span> 아이디</td>
+                <td class="userVal">
+                    <input type="text" name="id" value="" maxlength="15" class="userInput"
+                        style="width:120px;" />                    
+                    <button type="button" class="btn_search" onClick="">중복확인</button>
+                    <span style="margin-left:10px;"></span>
+                    <span style="color:#888888;">+ 8~12자, 첫 영문자, 영문자와 숫자 조합</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="userTit"><span class="c_imp">*</span> 비밀번호</td>
+                <td class="userVal">
+                    <input type="password" name="pass1" value="" style="width:100px;" class="userInput"
+                        maxlength="25" />
+                </td>
+            </tr>
+            <tr>
+                <td class="userTit"><span class="c_imp">*</span> 비밀번호 확인</td>
+                <td class="userVal">
+                    <input type="password" name="pass2" value="" style="width:100px;" class="userInput"
+                        maxlength="25" />
+                    <span style="margin:0 0 0 3px;color:#888888;">(확인을 위해 다시 입력해 주세요.)</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="userTit"><span class="c_imp">*</span> 이름</td>
+                <td class="userVal">
+                    <input type="text" name="name" value="" style="width:120px;" class="userInput" maxlength="10" />
+                </td>
+            </tr>
+            <tr>
+                <td class="userTit"><span style="margin-left:10px;"></span> 생년월일</td>
+                <td class="userVal">
+                    <label><input type="radio" name="sex" value="male" checked />남자</label>
+                    <label><input type="radio" name="sex" value="female" />여자</label>
+                    <span style="margin-left:20px;"></span>
+                    <select name="birth_year">
+                        <option value="" style="text-align: right;">----</option>
+                        <option value="2000">2000</option>
+                        <option value="2001">2001</option>
+                        <option value="2002">2002</option>
+                        <option value="2003">2003</option>
+                        <option value="2004">2004</option>
+                        <option value="2005">2005</option>
+                        <option value="2006">2006</option>
+                        <option value="2007">2007</option>
+                        <option value="2008">2008</option>
+                        <option value="2009">2009</option>
+                        <option value="2010">2010</option>
+                        <option value="2011">2011</option>
+                        <option value="2012">2012</option>
+                        <option value="2013">2013</option>
+                        <option value="2014">2014</option>
+                        <option value="2015">2015</option>
+                        <option value="2016">2016</option>
+                        <option value="2017">2017</option>
+                        <option value="2018">2018</option>
+                        <option value="2019">2019</option>
+                        <option value="2020">2020</option>
+                        <option value="2021">2021</option>
+                    </select> 년
+                    <select name="birth_month">
+                        <option value="" style="text-align: right;">----</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select> 월
+                    <select name="birth_day">
+                        <option value="" style="text-align: right;">----</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
+                        <option value="31">31</option>
+                    </select> 일
+                </td>
+            </tr>
+            <tr>
+                <td class="userTit" rowspan="2"><span class="c_imp">*</span> 이메일</td>
+                <td class="userVal">
+                    <input type="text" name="email1" value="" class="userInput w100" />
+                    <span style="font-size:16px;">＠</span>
+                    <input type="text" name="email2" value="" class="userInput w100" id="do_main" />
+                    <select name="email_sel" onchange="inputDomain(this.value);" class="userSelect w100">
+                        <option value=""> -- 선택 --</option>
+                        <option value="naver.com">naver.com</option>
+                        <option value="nate.com">nate.com</option>
+                        <option value="gmail.com">gmail.com</option>
+                        <option value="daum.net">daum.net</option>
+                        <option value="hanmail.net">hanmail.net</option>
+                        <option value="직접입력" selected>직접입력</option>
+                    </select>
+                    <label><input type="radio" name="mailing" value="yes" checked />수신허용</label>
+                    <label><input type="radio" name="mailing" value="no" />수신불가</label>
+                </td>
+            </tr>
+            <tr>
+                <td class="userVal" style="height:25px;color:#888888;">
+                	※ hanmail.net은 메일 수신이 어려울 수 있으니 가급적 다른 메일을 이용하시기 바랍니다.
+                </td>
+            </tr>
+            <tr>
+                <td class="userTit" rowspan="3"><span style="margin-left:10px;"></span> 주소</td>
+                <td class="userVal">
+                    <button type="button" class="btn_search" onClick="">주소찾기</button>
+                    <input type="text" name="zipcode" maxlength="10" value="" class="userInput w50" /> (우편번호)
+                </td>
+            </tr>
+            <tr>
+                <td class="userVal">
+                    <input type="text" name="addr1" class="userInput w510" maxlength="100" value="" />
+                </td>
+            </tr>
+            <tr>
+                <td class="userVal">
+                    <input type="text" name="addr2" class="userInput w410" maxlength="100" value="" />
+                    <span style="margin-left:10px;"></span>
+                    + 나머지 주소
+                </td>
+            </tr>
+            <tr>
+                <td class="userTit"><span style="margin-left:10px;"></span> 전화번호</td>
+                <td class="userVal">
+                    <select name="conNum">
+                        <option value="02">02</option>
+                        <option value="031">031</option>
+                        <option value="032">032</option>
+                        <option value="033">033</option>
+                        <option value="041">041</option>
+                        <option value="042">042</option>
+                        <option value="043">043</option>
+                        <option value="044">044</option>
+                        <option value="051">051</option>
+                        <option value="052">052</option>
+                        <option value="053">053</option>
+                        <option value="054">055</option>
+                        <option value="061">061</option>
+                        <option value="062">062</option>
+                        <option value="063">063</option>
+                        <option value="064">064</option>
+                    </select> -
+                    <input type="text" name="phone2" id="phone2" value="" class="userInput w40" maxlength="4" 
+                        onkeyup ="commonFocusMove('phone2', 4, 'phone3');"/> -
+                    <input type="text" name="phone3" id="phone3" value="" class="userInput w40" maxlength="4" 
+                        onkeyup ="commonFocusMove('phone3', 4, 'hphone2');"/>
+                </td>
+            </tr>
+            <tr>
+                <td class="userTit"><span class="c_imp">*</span> 휴대전화</td>
+                <td class="userVal">
+                    <select name="tel">
+                        <option value="010">010</option>
+                        <option value="011">011</option>
+                        <option value="012">012</option>
+                        <option value="013">013</option>
+                        <option value="014">014</option>
+                        <option value="015">015</option>
+                        <option value="016">016</option>
+                        <option value="017">017</option>
+                        <option value="018">018</option>
+                        <option value="019">019</option>
+                    </select> -
+                    <input type="text" name="hphone2" id="hphone2" value="" class="userInput w40" maxlength="4" 
+                        onkeyup ="commonFocusMove('hphone2', 4, 'hphone3');" /> -
+                    <input type="text" name="hphone3" id="hphone3" value="" class="userInput w40" maxlength="4" />
+                    <span style="margin-left:20px;"></span>
+                    <label><input type="radio" name="sms" value="yes" checked />SMS 수신허용</label>
+                    <label><input type="radio" name="sms" value="no" />SMS 수신불가</label>
+                </td>
+            </tr>
+            <tr>
+                <td class="userTit"><span class="c_imp">*</span> 관심분야</td>
+                <td class="userVal" style="padding:3px 0 3px 10px;">
+                    <select name="etc_no1" class="userSelect w300">
+                        <option value="">:: 관심분야 선택 ::</option>
+                        <option value="1">책을 출판하기 위해서</option>
+                        <option value="3">인쇄/제본이 필요해서</option>
+                        <option value="4">1인출판사 지원서비스를 이용하기 위해서</option>
+                        <option value="5">도서를 구입하기 위해서</option>
+                        <option value="6">나만의 책만들기</option>
+                        <option value="7">기타</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="userTit"><span class="c_imp">*</span> 가입경로</td>
+                <td class="userVal" style="padding:3px 0 3px 10px;">
+                    <select name="etc_no2" class="userSelect w300">
+                        <option value="">:: 가입경로 선택 ::</option>
+                        <option value="2">네이버 검색</option>
+                        <option value="8">다음(Daum) 검색</option>
+                        <option value="9">기타 인터넷 검색</option>
+                        <option value="10">아는 사람 소개</option>
+                        <option value="11">북랩의 책을 보고</option>
+                        <option value="12">기타</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <table style="width:670px; margin-top:20px;">
+            <tr>
+                <td align="center">                    
+                    <input type="submit" value="등록하기" class="btn_submit" />
+                    &nbsp;&nbsp;
+                    <input type="reset" value="새로쓰기" class="btn_cancel" />
+                </td>
+            </tr>
+        </table>
+        <!-- <div id="id_loading">
+            <img src="../images/loading.gif" style="width:40%;" />
+        </div> -->
+    </form>
+</body>
+</html>
