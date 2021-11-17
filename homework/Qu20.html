@@ -11,6 +11,8 @@
         }
         onfocus = function(){
             document.body.style.backgroundColor = "white";
+            //창을 잡는순간 포커스가 이동한다.
+            document.frm.user_id.focus();
         }
     </script>
 </head>
@@ -24,5 +26,9 @@
        window 객체에 focus 이벤트가 발생
        한다.
     </p>
+
+    <form name="frm">
+        <input type="text" name="user_id" size="20">
+    </form>
 </body>
 </html>
