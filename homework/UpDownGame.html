@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UpDownGame.html</title>
+    <script>
+        var r;
+        var count = 1;
+
+        window.onload = function(){
+            r = parseInt(Math.random() * 100) + 1;
+            if(r > 100){
+                while(true){
+                    r = parseInt(Math.random() * 100) + 1;
+                    if(r > 0 && r < 100){
+                        break;
+                    }
+                }
+            }
+            alert("컴퓨터의 숫자:" + r);
+            document.getElementById("input").focus();
+        }
+
+        function input(){
+            var user = document.getElementById("input").value;
+            var span = document.getElementById("span");
+            var img = document.getElementById("img");
+            
+            if(count >= 8){
+                alert("시도횟수가 초과하였습니다. 게임을 재시작 합니다.");
+                location.reload();
+                return;
+            }
+
+            if(user > 100 || user < 1){
+                alert("1~100사이의 정수를 입력해주세요");
+                document.getElementById("input").value = '';
+                document.getElementById("input").focus();
+                img.style.width = "300px";
+                img.style.height = "200px";
+                img.src = "../images/error.jpg";
+                return;
+            }
+            
+            if(user > r){
+                alert("DOWN!");
+                document.getElementById("input").value = '';
+                document.getElementById("input").focus();
+                img.style.width = "300px";
+                img.style.height = "200px";
+                img.src = "../images/down.jpg";
+                span.innerHTML = count++;
+            }
+            else if(user < r){
+                alert("UP!");
+                document.getElementById("input").value = '';
+                document.getElementById("input").focus();
+                img.style.width = "300px";
+                img.style.height = "200px";
+                img.src = "../images/up.jpg";
+                span.innerHTML = count++;
+            }
+            else{
+                alert("정답!!");
+                img.style.width = "300px";
+                img.style.height = "200px";
+                img.src = "../images/answer.jpeg";
+                document.getElementById("refresh").style.visibility = "visible";
+            }
+        }
+
+        function refresh(){
+            location.reload();
+        }
+    </script>
+</head>
+<body>
+    <h1>업다운게임</h1>
+    <h2>1~100사이의 숫자를 입력하세요</h2>
+    <h2>시도횟수 : <span id="span" style="font-size: 50px;">0</span>회</h2>
+    숫자입력 : <input type="text" name="input" id="input" size="2">
+    <input type="button" id="user" value="확인" onclick="input();">
+    <input type="button" id="refresh" value="새로고침" 
+        style="visibility: hidden;" onclick="refresh();">
+    <br><br>
+    <img src="../images/updowngame.jpg" alt="로고" id="img">
+</body>
+</html>
