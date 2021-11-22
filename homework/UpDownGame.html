@@ -23,7 +23,7 @@
             document.getElementById("input").focus();
         }
 
-        function input(){
+        function startGame(){
             var user = document.getElementById("input").value;
             var span = document.getElementById("span");
             var img = document.getElementById("img");
@@ -45,7 +45,6 @@
             }
             
             if(user > r){
-                alert("DOWN!");
                 document.getElementById("input").value = '';
                 document.getElementById("input").focus();
                 img.style.width = "300px";
@@ -54,7 +53,6 @@
                 span.innerHTML = count++;
             }
             else if(user < r){
-                alert("UP!");
                 document.getElementById("input").value = '';
                 document.getElementById("input").focus();
                 img.style.width = "300px";
@@ -81,7 +79,7 @@
     <h2>1~100사이의 숫자를 입력하세요</h2>
     <h2>시도횟수 : <span id="span" style="font-size: 50px;">0</span>회</h2>
     숫자입력 : <input type="text" name="input" id="input" size="2">
-    <input type="button" id="user" value="확인" onclick="input();">
+    <input type="button" id="user" value="확인" onclick="startGame();">
     <input type="button" id="refresh" value="새로고침" 
         style="visibility: hidden;" onclick="refresh();">
     <br><br>
